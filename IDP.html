@@ -45,31 +45,56 @@
 
 									<h2>Beautiful Soup and Requests Python Web Scraping</h2>
 									<p>This is an individual passion project that I used as an introduction to Python and many 
-										libraries such as BeautifulSoup and Requests. The program scrapes the top 
-										100 fantasy books from the TIME and then uses their titles to scrape their ISBNs from a 
-										ISBN catalogue.</p>
-								</header>
-								<ul>
-									<h2>Required Libraries:</h2>
-									<li>Numpy</li>
-									<li>Requests</li>
-									<li>CSV</li>
-									<li>BS4</li>
-								</ul>
-								<p>
-									The original goal of this project was to build up skills in Python and common data analytics 
-									tools and strategies. Building these tools, I am now closer to starting a career in the field of Data.
-									<h3>The steps of the code are:</h3>
-									<ol>
-										<li>The html code is scraped from the webpage, 
-											This code contains all of the information that I want to scrape from the page.</li>
-										<li>This html code is not readible or easily traversable so I used BeautifulSoup to allow me to traverse the html, searching for the information that I need to scrape.</li>
-										<li>From the TIME page I get the Title, Author, and TIME Link to the page. I use the scraped title to build a URL to scrape the ISBN from on another webpage.</li>
-										<li>All of this information is then entered into a .csv file with headers for distinctions. You can find this .csv file in the repository as well.</li>
-										<li>These steps are repeated for all 100 books on the list.</li>
-									</ol>
-									There are plans for adding additional information, i.e. ratings, which is why I scraped the IBSN but those are not complete yet.
-									
+                                        libraries such as BeautifulSoup and Requests. The program scrapes the top 
+                                        100 fantasy books from the TIME and then uses their titles to scrape their ISBNs from an 
+                                        ISBN catalog.</p>
+                                </header>
+                                <ul>
+                                    <h2>Required Libraries:</h2>
+                                    <li>Numpy</li>
+                                    <li>Requests</li>
+                                    <li>CSV</li>
+                                    <li>BS4</li>
+                                </ul>
+                                <p>
+                                    The original goal of this project was to build up skills in Python and common data analytics 
+                                    tools and strategies. By building these tools, I am now closer to starting a career in the field of Data.
+                                    <h3>The steps of the code are:</h3>
+                                    <ol>
+                                        <li>The HTML code is scraped from the webpage by requesting the website's URL, 
+                                            This code contains all of the information that I want to scrape from the page.</li>
+                                        <li>This HTML code is not readable or easily traversable so I used BeautifulSoup 
+                                            to allow me to traverse the HTML, searching for the information that I need to scrape. It allows 
+                                            me to extract the elements by filtering based on the class or tag.</li>
+                                        <li>From the TIME page, I get the Title, Author, and TIME Link to the page. I use the scraped title to build a URL to scrape the ISBN from another webpage.</li>
+                                        <li>All of this information is then entered into a .csv file with headers for distinctions.
+                                            The .csv file can be processed using Numpy or Pandas. At this point, I use Numpy for small amounts of computation 
+                                            You can find this .csv file in the repository as well.</li>
+                                        <li>These steps are repeated for all 100 books on the list.</li>
+                                    </ol>
+                                    There are plans for adding additional information, i.e. ratings, 
+                                    which is why I scraped the IBSN but those are not complete yet.<br />
+                                    In Addition to the current outputs of the code, some additional functions that I am exploring are:
+                                    <ul>
+                                        <li>Adding access or an abridged version of the Book Summary. 
+                                            The main issue for this is that many websites do not allow scraping directly
+                                            which inhibits adding this feature yet without doing more research.</li>
+                                        <li>Additional Book information, i.e. Publish data, location, etc., would allow more 
+                                            conclusions and comparisons to be made.
+                                        </li>
+                                        <li>Increasing the speed of the scraping process. At the current moment, the scraping takes 
+                                            a long time because we are scraping 102 websites. Is there a way to reduce this? This task 
+                                            requires more research.</li>
+                                    </ul>
+                                    This project started as a simple assignment but it jumpstarted my enjoyment of Data 
+									Analytics as a career path. The outline of the steps is relatively simple 
+									but seeing those steps take shape as I slowly widdled down the amount of HTML
+									code that I received from my request was exciting. While the results of this specific
+									project do not have much real-world application, it has been a great baseline for me to start from for 
+									my future projects. This project has led me to many other projects, including my passion project 
+									for the summer.
+									The outline of those plans is listed in the GitHub repository as well.
+                                    <br /> 
 									<h2>Code Snippet</h2>
 									<pre><code>
 if __name__ == "__main__":
