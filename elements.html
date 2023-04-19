@@ -413,15 +413,48 @@
 
 								<!-- Preformatted Code -->
 									<h2>Preformatted</h2>
-									<pre><code>i = 0;
+									<pre><code>
+if __name__ == "__main__":
 
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
+    url = "https://time.com/collection/100-best-fantasy-books/"
 
-print 'It took ' + i + ' iterations to sort the deck.';
+    soup = html_code(url)
+    books = soup.find_all("li", class_="section-list__item")
+    
+    holder = []
+    i = 0
+    j = 0
+    titles = []
+    isbn = []
+    headers = ['Title', 'Author', 'Link', 'ISBN']
+    with open('books.csv', 'w') as fp:
+        writer = csv.writer(fp)
+        writer.writerow(headers)
+        for book in books:
+            link = book.find('a').get('href')
+            info = book.find('h3', class_="section-list__item-headline").text.strip()
+
+            info = info.rsplit(' by ', 1)
+
+            title = info[0]
+            if j != 0 :
+                
+                titleURL = "https://bookscouter.com/search?query=" + title.replace(' ', '%20').replace('\'', '')
+                r = requests.get(titleURL)
+                soup = BS(r.content, 'html.parser')
+                isbns = soup.find_all('span', class_='BookText_b1ofiyxa')
+                if len(isbns) != 0:
+                    isbn = isbns[2].text
+                else:
+                    isbn = []
+            j = j+1
+            author = []
+            if  len(info) == 2:
+                author = info[1]
+
+            holder = [title, author, link, isbn]
+
+            writer.writerow(holder)
 </code></pre>
 
 							</section>
